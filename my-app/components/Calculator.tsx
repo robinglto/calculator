@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Botones from "./Botones";
 
 export default function Calculator() {
   const [val, setVal] = useState("0");
@@ -11,11 +12,15 @@ export default function Calculator() {
     }
   };
 
+  function metodo(e: any) {
+    setVal(val + e.target.value);
+  }
+
   return (
     <div className="flex justify-center mt-32 text-2xl">
       <div className="space-y-2">
         <input
-          onClick={(e) => setVal("")}
+          onClick={() => setVal("")}
           className="bg-black text-end outline-0 outline-none cursor-pointer"
           type="text"
           value={val}
@@ -25,174 +30,38 @@ export default function Calculator() {
         />
 
         <div>
-          <div className="space-x-4 text-center">
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={7}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              7
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={8}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              8
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={9}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              9
-            </button>
-
-            <button
-              className="bg-amber-500 p-2 w-14 h-14 rounded-full"
-              value={"+"}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              +
-            </button>
+          <div className="space-x-2 text-center">
+            <Botones value={7} metodo={metodo} show={7} data={true} />
+            <Botones value={8} metodo={metodo} show={8} data={true} />
+            <Botones value={9} metodo={metodo} show={9} data={true} />
+            <Botones value={"+"} metodo={metodo} show={"+"} data={false} />
           </div>
         </div>
 
         <div>
-          <div className="space-x-4 text-center">
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={4}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              4
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={5}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              5
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={6}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              6
-            </button>
-
-            <button
-              className="bg-amber-500 p-2 w-14 h-14 rounded-full"
-              value={"-"}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              -
-            </button>
+          <div className="space-x-2 text-center">
+            <Botones value={4} metodo={metodo} show={4} data={true} />
+            <Botones value={5} metodo={metodo} show={5} data={true} />
+            <Botones value={6} metodo={metodo} show={6} data={true} />
+            <Botones value={"-"} metodo={metodo} show={"-"} data={false} />
           </div>
         </div>
 
         <div>
-          <div className="space-x-4 text-center">
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={1}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              1
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={2}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              2
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={3}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              3
-            </button>
-
-            <button
-              className="bg-amber-500 p-2 w-14 h-14 rounded-full"
-              value={"*"}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              x
-            </button>
+          <div className="space-x-2 text-center">
+            <Botones value={1} metodo={metodo} show={1} data={true} />
+            <Botones value={2} metodo={metodo} show={2} data={true} />
+            <Botones value={3} metodo={metodo} show={3} data={true} />
+            <Botones value={"*"} metodo={metodo} show={"*"} data={false} />
           </div>
         </div>
 
         <div>
-          <div className="space-x-4 text-center">
-            <button
-              className="bg-gray-400 text-black p-2 w-14 h-14 rounded-full"
-              value={"c"}
-              onClick={(e) => {
-                setVal("");
-              }}
-            >
-              C
-            </button>
-
-            <button
-              className="bg-zinc-700 p-2 w-14 h-14 rounded-full"
-              value={0}
-              onClick={(e) => {
-                setVal(val + e.target.value);
-              }}
-            >
-              0
-            </button>
-
-            <button
-              className="bg-gray-400 text-black p-2 w-14 h-14 rounded-full"
-              value={"="}
-              onClick={() => calculate()}
-            >
-              =
-            </button>
-
-            <button
-              className="bg-amber-500 p-2 w-14 h-14 rounded-full"
-              value={"/"}
-              onClick={(e) => setVal(val + e.target.value)}
-            >
-              /
-            </button>
+          <div className="space-x-2 text-center">
+            <Botones metodo={() => setVal("")} show={"C"} data={true} />
+            <Botones value={0} metodo={metodo} show={0} data={true} />
+            <Botones value={"="} metodo={calculate} show={"="} data={true} />
+            <Botones value={"/"} metodo={metodo} show={"/"} data={false} />
           </div>
         </div>
       </div>
